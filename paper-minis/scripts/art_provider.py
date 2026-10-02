@@ -125,10 +125,14 @@ def _key_out(img, bg, tol: int) -> None:
         ImageChops.logical_and(near(r, r0), near(g, g0)),
         near(b, b0)).convert("L")
 
-    is_magenta = (r0 > 200 and g0 < 50 and b0 > 200)
+    is_chroma = (
+        (r0 > 200 and g0 < 50 and b0 > 200) or  # Magenta
+        (r0 < 50 and g0 > 200 and b0 < 50) or  # Green
+        (r0 < 50 and g0 < 50 and b0 > 200)     # Blue
+    )
 
-    if is_magenta:
-        # For pure magenta screen, key out ALL magenta pixels including interior loops/holes
+    if is_chroma:
+        # For pure chroma screens (magenta, green, blue), key out ALL matching pixels including interior loops/holes
         alpha = img.getchannel("A")
         alpha.paste(0, (0, 0), mask)
         alpha = alpha.filter(ImageFilter.MinFilter(3))
@@ -235,21 +239,28 @@ def _trim_and_encode(path: Path, strip_bg: bool, max_px: int = 0):
     if opaque:
         # No usable alpha. Key the background out. Image models often ignore
         # "transparent background", so the art director asks for a flat pure
-        # magenta screen instead -- a colour that never appears in a creature.
-        # Magenta is tried first, then a uniform corner colour.
+        # chroma screen (magenta, green, or blue).
         corners = [img.getpixel(p)[:3] for p in
                    ((0, 0), (img.width - 1, 0), (0, img.height - 1),
                     (img.width - 1, img.height - 1))]
-        magenta = all(r > 170 and g < 90 and b > 170 for r, g, b in corners)
-        if magenta:
+        
+        is_magenta = all(r > 170 and g < 90 and b > 170 for r, g, b in corners)
+        is_green = all(r < 90 and g > 170 and b < 90 for r, g, b in corners)
+        is_blue = all(r < 90 and g < 90 and b > 170 for r, g, b in corners)
+
+        if is_magenta:
             r0, g0, b0, tol = 255, 0, 255, 90
+        elif is_green:
+            r0, g0, b0, tol = 0, 255, 0, 90
+        elif is_blue:
+            r0, g0, b0, tol = 0, 0, 255, 90
         else:
             r0, g0, b0 = (sum(c[i] for c in corners) // 4 for i in range(3))
             tol = 28
 
         spread = max(abs(c[i] - v) for c in corners
                      for i, v in enumerate((r0, g0, b0)))
-        if magenta or spread <= 18:
+        if is_magenta or is_green or is_blue or spread <= 18:
             _key_out(img, (r0, g0, b0), tol)
         else:
             warnings.append("opaque background could not be keyed out; ask for "

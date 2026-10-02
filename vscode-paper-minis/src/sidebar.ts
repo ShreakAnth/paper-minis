@@ -98,6 +98,14 @@ export class PaperMinisSidebarProvider implements vscode.WebviewViewProvider {
     <input id="title" placeholder="Phandelver or Tonight's Encounter" />
 
     <button id="generateBtn">Build minis</button>
+    
+    <label style="margin-top: 14px;">Quick Encounter Presets</label>
+    <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-top: 4px;">
+      <button type="button" class="presetBtn" data-title="Sci-Fi Outpost Siege" data-roster="1 Officer ShreakAnth (Heavy Duty Officer) # size=medium\n1 Trisha (Medical Support) # size=medium\n1 Oscar (Loyal Dog) # size=small\n1 Prajwal (Heavy Gun Operator) # size=medium\n1 Pixelpebble (Combat Engineer) # size=medium\n10 Facehugger # size=small\n3 Alien Egg # size=tiny\n7 Mature Alien # size=medium\n4 Alien Creeper # size=medium\n1 Big Queen # size=huge" style="background: var(--vscode-button-secondaryBackground, #3a3d41); padding: 5px; font-size: 11px;">Sci-Fi Siege</button>
+      <button type="button" class="presetBtn" data-title="Goblin Ambush" data-roster="7 Goblins\n3 Wolves\n1 Ogre" style="background: var(--vscode-button-secondaryBackground, #3a3d41); padding: 5px; font-size: 11px;">Goblin Ambush</button>
+      <button type="button" class="presetBtn" data-title="Undead Crypt" data-roster="12 Skeletons\n4 Zombies\n1 Lich" style="background: var(--vscode-button-secondaryBackground, #3a3d41); padding: 5px; font-size: 11px;">Undead Crypt</button>
+    </div>
+
     <div class="hint">Natural-language requests are optionally turned into a roster using Gemini.</div>
 
     <script>
@@ -107,6 +115,13 @@ export class PaperMinisSidebarProvider implements vscode.WebviewViewProvider {
         const text = document.getElementById('roster').value;
         const title = document.getElementById('title').value;
         vscode.postMessage({ type: 'generate', text, title });
+      });
+
+      document.querySelectorAll('.presetBtn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.getElementById('roster').value = btn.getAttribute('data-roster');
+          document.getElementById('title').value = btn.getAttribute('data-title');
+        });
       });
     </script>
   </body>

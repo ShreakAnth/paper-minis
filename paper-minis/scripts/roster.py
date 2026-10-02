@@ -219,9 +219,37 @@ def parse_line(line: str, db: CreatureDB) -> Entry | None:
     return entry
 
 
+def parse_statblock(text: str) -> str:
+    """Extract creature name, count, size, and archetype from raw stat-block text."""
+    lines = [l.strip() for l in text.splitlines() if l.strip()]
+    if not lines:
+        return text
+
+    name = lines[0]
+    size = "medium"
+    archetype = "humanoid"
+
+    for l in lines[1:5]:
+        m = re.search(r"\b(tiny|small|medium|large|huge|gargantuan)\b", l, re.IGNORECASE)
+        if m:
+            size = m.group(1).lower()
+        if re.search(r"\b(beast|monstrosity|dragon|undead|fiend|aberration|construct|plant|elemental)\b", l, re.IGNORECASE):
+            match = re.search(r"\b(beast|monstrosity|dragon|undead|fiend|aberration|construct|plant|elemental)\b", l, re.IGNORECASE).group(1).lower()
+            mapping = {
+                "beast": "quadruped", "dragon": "dragon", "undead": "undead-humanoid",
+                "aberration": "beast-hybrid", "plant": "plant", "construct": "humanoid-armored"
+            }
+            archetype = mapping.get(match, "humanoid")
+
+    return f"1 {name} # size={size} archetype={archetype}"
+
+
 def parse_roster(text: str, db: CreatureDB | None = None) -> list[Entry]:
     db = db or CreatureDB()
     out = []
+    # Auto-convert stat block if detected
+    if "Armor Class" in text or "Hit Points" in text or "Challenge" in text:
+        text = parse_statblock(text)
     for line in text.splitlines():
         entry = parse_line(line, db)
         if entry:
