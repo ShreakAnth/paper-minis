@@ -125,22 +125,31 @@ def _key_out(img, bg, tol: int) -> None:
         ImageChops.logical_and(near(r, r0), near(g, g0)),
         near(b, b0)).convert("L")
 
-    # The frame is the trick: without it a background region touching only,
-    # say, the left edge would need its own seed. With it, everything that
-    # reaches any edge reaches (0, 0).
-    framed = Image.new("L", (img.width + 2, img.height + 2), 255)
-    framed.paste(mask, (1, 1))
-    ImageDraw.floodfill(framed, (0, 0), 128, thresh=0)
-    reachable = framed.crop((1, 1, img.width + 1, img.height + 1))
+    is_magenta = (r0 > 200 and g0 < 50 and b0 > 200)
 
-    alpha = img.getchannel("A")
-    # 128 marks background; everything else keeps whatever alpha it had.
-    alpha.paste(0, (0, 0), reachable.point(
-        lambda p: 255 if p == 128 else 0, mode="1"))
-    # Erode 1px so the anti-aliased fringe ring goes with it, then soften so
-    # the cut edge is not jagged. Imperceptible at 25 mm.
-    alpha = alpha.filter(ImageFilter.MinFilter(3))
-    img.putalpha(alpha.filter(ImageFilter.GaussianBlur(0.6)))
+    if is_magenta:
+        # For pure magenta screen, key out ALL magenta pixels including interior loops/holes
+        alpha = img.getchannel("A")
+        alpha.paste(0, (0, 0), mask)
+        alpha = alpha.filter(ImageFilter.MinFilter(3))
+        img.putalpha(alpha.filter(ImageFilter.GaussianBlur(0.6)))
+    else:
+        # The frame is the trick: without it a background region touching only,
+        # say, the left edge would need its own seed. With it, everything that
+        # reaches any edge reaches (0, 0).
+        framed = Image.new("L", (img.width + 2, img.height + 2), 255)
+        framed.paste(mask, (1, 1))
+        ImageDraw.floodfill(framed, (0, 0), 128, thresh=0)
+        reachable = framed.crop((1, 1, img.width + 1, img.height + 1))
+
+        alpha = img.getchannel("A")
+        # 128 marks background; everything else keeps whatever alpha it had.
+        alpha.paste(0, (0, 0), reachable.point(
+            lambda p: 255 if p == 128 else 0, mode="1"))
+        # Erode 1px so the anti-aliased fringe ring goes with it, then soften so
+        # the cut edge is not jagged. Imperceptible at 25 mm.
+        alpha = alpha.filter(ImageFilter.MinFilter(3))
+        img.putalpha(alpha.filter(ImageFilter.GaussianBlur(0.6)))
 
 
 def _resample(img, max_px: int, warnings: list):

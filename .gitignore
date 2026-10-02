@@ -1,5 +1,6 @@
 # Python
 __pycache__/
+*.pyc
 *.py[cod]
 *$py.class
 *.so
@@ -31,7 +32,13 @@ dist/
 # Generated Outputs & Cache
 test-output/
 minis-out/
+minis-out*/
 .paper-minis-output/
+roster.txt
+sample_roster.txt
+*.roster.txt
+
+
 
 # OS & Environment
 .DS_Store
