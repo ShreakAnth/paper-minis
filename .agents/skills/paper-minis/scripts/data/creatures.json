@@ -1,0 +1,394 @@
+{
+  "schema": 1,
+  "source": "D&D 5e SRD / Lost Mine of Phandelver stat blocks. Sizes are the SRD size category; every field is overridable per-roster via a '#' override line or a sidecar creatures.local.json.",
+  "notes": "archetype drives both the procedural fallback silhouette and the skeleton of the gen-AI art prompt. palette = [primary, shadow, accent].",
+  "creatures": {
+    "goblin": {
+      "size": "small",
+      "archetype": "humanoid-armored",
+      "palette": [
+        "#5c8a3f",
+        "#31501f",
+        "#d2ba7c"
+      ],
+      "art": "wiry green-skinned goblin, oversized ears, scimitar and battered wooden shield, scrap leather armour"
+    },
+    "hobgoblin": {
+      "size": "medium",
+      "archetype": "humanoid-armored",
+      "palette": [
+        "#b2552f",
+        "#662f18",
+        "#2f5f6c"
+      ],
+      "art": "disciplined orange-skinned hobgoblin soldier, lamellar armour, longsword and kite shield"
+    },
+    "bugbear": {
+      "size": "medium",
+      "archetype": "humanoid-armored",
+      "palette": [
+        "#6a4b35",
+        "#3e281b",
+        "#4e341f"
+      ],
+      "art": "hulking hairy bugbear, hunched shoulders, morningstar, fur and hide straps"
+    },
+    "orc": {
+      "size": "medium",
+      "archetype": "humanoid-armored",
+      "palette": [
+        "#6b7d54",
+        "#3d4d31",
+        "#7e432f"
+      ],
+      "art": "grey-green orc raider, tusked jaw, greataxe, studded hide armour"
+    },
+    "ogre": {
+      "size": "large",
+      "archetype": "humanoid-armored",
+      "palette": [
+        "#8c7a65",
+        "#4e4437",
+        "#4a5a3a"
+      ],
+      "art": "massive brute ogre, heavy thick hides, huge knotted wooden club"
+    },
+    "wolf": {
+      "size": "medium",
+      "archetype": "quadruped",
+      "palette": [
+        "#666666",
+        "#333333",
+        "#999999"
+      ],
+      "art": "grey timber wolf, snarling jaws, thick winter pelt, predatory stalking stance"
+    },
+    "dire wolf": {
+      "size": "large",
+      "archetype": "quadruped",
+      "palette": [
+        "#4a4a4a",
+        "#222222",
+        "#777777"
+      ],
+      "art": "huge primeval dire wolf, scarred muzzle, bristling dark fur"
+    },
+    "skeleton": {
+      "size": "medium",
+      "archetype": "undead-humanoid",
+      "palette": [
+        "#d8d3c5",
+        "#2a2621",
+        "#7d2b24"
+      ],
+      "art": "animated human skeleton, weathered yellowed bones, rusty shortsword and cracked round shield"
+    },
+    "zombie": {
+      "size": "medium",
+      "archetype": "undead-humanoid",
+      "palette": [
+        "#5a6b5c",
+        "#2d352e",
+        "#8c5341"
+      ],
+      "art": "shambling decaying zombie, torn rags, grey pallid flesh"
+    },
+    "ghoul": {
+      "size": "medium",
+      "archetype": "undead-humanoid",
+      "palette": [
+        "#4f5e52",
+        "#232b25",
+        "#8c2e2e"
+      ],
+      "art": "feral gaunt ghoul, elongated clawed fingers, sharp fangs, crouching predatory pose"
+    },
+    "wraith": {
+      "size": "medium",
+      "archetype": "undead-robed",
+      "palette": [
+        "#1f2d3d",
+        "#0c1219",
+        "#40a0ff"
+      ],
+      "art": "incorporeal shadowy wraith, tattered ethereal cowl, glowing cold eyes"
+    },
+    "spectator": {
+      "size": "medium",
+      "archetype": "floating-orb",
+      "palette": [
+        "#3f6b3f",
+        "#1c381c",
+        "#8ae08a"
+      ],
+      "art": "floating spherical aberration, large central eye, gaping maw, four eyestalks"
+    },
+    "flameskull": {
+      "size": "tiny",
+      "archetype": "floating-orb",
+      "palette": [
+        "#2e5c38",
+        "#112b18",
+        "#4ade80"
+      ],
+      "art": "floating green-flame engulfed human skull, eerie green glow"
+    },
+    "giant spider": {
+      "size": "large",
+      "archetype": "insectoid",
+      "palette": [
+        "#1f1f1f",
+        "#0d0d0d",
+        "#8c2323"
+      ],
+      "art": "enormous hairy black spider, venomous dripping chelicerae, eight spindly legs"
+    },
+    "stirge": {
+      "size": "tiny",
+      "archetype": "insectoid",
+      "palette": [
+        "#734b3d",
+        "#38231c",
+        "#c26d55"
+      ],
+      "art": "winged parasitic stirge, long proboscis needle, four membranous wings"
+    },
+    "ochre jelly": {
+      "size": "large",
+      "archetype": "blob",
+      "palette": [
+        "#c29b38",
+        "#614c17",
+        "#e0b853"
+      ],
+      "art": "amorphous pulsing ochre ooze, acidic sludge, glistening yellow-brown pseudopods"
+    },
+    "gray ooze": {
+      "size": "medium",
+      "archetype": "blob",
+      "palette": [
+        "#6e7378",
+        "#34373a",
+        "#9fa6ac"
+      ],
+      "art": "wet slick grey slime puddle forming pseudopod, corroded stone look"
+    },
+    "twig blight": {
+      "size": "small",
+      "archetype": "plant",
+      "palette": [
+        "#4a3728",
+        "#211811",
+        "#789440"
+      ],
+      "art": "monstrous ambulatory bundle of dry gnarled thorny twigs and roots"
+    },
+    "owlbear": {
+      "size": "large",
+      "archetype": "beast-hybrid",
+      "palette": [
+        "#4a3c31",
+        "#241d17",
+        "#d9822b"
+      ],
+      "art": "ferocious owlbear, massive shaggy bear body, hooked raptor beak and keen round eyes"
+    },
+    "grick": {
+      "size": "medium",
+      "archetype": "beast-hybrid",
+      "palette": [
+        "#4d594b",
+        "#272e26",
+        "#8a9a87"
+      ],
+      "art": "worm-like bristling grick, rocky grey segmented hide, four barbed facial tentacles around a beak"
+    },
+    "young green dragon": {
+      "size": "large",
+      "archetype": "dragon",
+      "palette": [
+        "#2d6a4f",
+        "#143728",
+        "#52b788"
+      ],
+      "art": "young emerald-scaled green dragon, prominent brow crest, spiked neck frill, predatory grin"
+    },
+    "adult dragon": {
+      "size": "huge",
+      "archetype": "dragon",
+      "palette": [
+        "#8b2500",
+        "#4a1200",
+        "#ff6347"
+      ],
+      "art": "mighty winged dragon, massive horns, thick scaly hide, smoking nostrils"
+    },
+    "ancient dragon": {
+      "size": "gargantuan",
+      "archetype": "dragon",
+      "palette": [
+        "#5c1010",
+        "#2c0505",
+        "#d4af37"
+      ],
+      "art": "colossal ancient dragon, majestic weathered scales, sweeping wingspan, crown of great horns"
+    },
+    "human warrior": {
+      "size": "medium",
+      "archetype": "humanoid-armored",
+      "palette": [
+        "#415a77",
+        "#1b263b",
+        "#e0a96d"
+      ],
+      "art": "stalwart human soldier in chainmail, surcoat, steel shield and arming sword"
+    },
+    "human ruffian": {
+      "size": "medium",
+      "archetype": "humanoid",
+      "palette": [
+        "#7b2cbf",
+        "#3c096c",
+        "#c77dff"
+      ],
+      "art": "sneering thug in a scarlet cloak, leather vest, wielding shortswords"
+    },
+    "human commoner": {
+      "size": "medium",
+      "archetype": "humanoid",
+      "palette": [
+        "#8d6e63",
+        "#4e342e",
+        "#d7ccc8"
+      ],
+      "art": "simple townsperson in sturdy wool tunic and leather apron"
+    },
+    "dwarf commoner": {
+      "size": "medium",
+      "archetype": "humanoid",
+      "palette": [
+        "#5d4037",
+        "#3e2723",
+        "#bcaaa4"
+      ],
+      "art": "stocky bearded dwarf prospector, sturdy work clothes, heavy boots, mining pick on shoulder"
+    },
+    "human cultist": {
+      "size": "medium",
+      "archetype": "humanoid-robed",
+      "palette": [
+        "#2b2b2b",
+        "#121212",
+        "#9b111e"
+      ],
+      "art": "fanatical cultist in dark ceremonial robes, occult symbol pendant, curved sacrificial dagger"
+    },
+    "mage": {
+      "size": "medium",
+      "archetype": "humanoid-robed",
+      "palette": [
+        "#1d3557",
+        "#0d1b2a",
+        "#f1faee"
+      ],
+      "art": "arcane wizard in deep blue embroidered robes, clutching a staff of glass or wood"
+    },
+    "drow": {
+      "size": "medium",
+      "archetype": "humanoid-armored",
+      "palette": [
+        "#242038",
+        "#12101c",
+        "#725ac1"
+      ],
+      "art": "dark elf scout, obsidian skin, white hair, dark piwafwi cloak, hand crossbow"
+    },
+    "drow mage": {
+      "size": "medium",
+      "archetype": "humanoid-robed",
+      "palette": [
+        "#1b1924",
+        "#0a0910",
+        "#9a8c98"
+      ],
+      "art": "slender dark elf spellcaster in spider-silk vestments, obsidian skin, white hair, staff topped with spider motif"
+    },
+    "doppelganger": {
+      "size": "medium",
+      "archetype": "humanoid",
+      "palette": [
+        "#839788",
+        "#3e4740",
+        "#bfd7ea"
+      ],
+      "art": "slender featureless humanoid shapeshifter, grey smooth skin, blank yellow eyes"
+    },
+    "nothic": {
+      "size": "medium",
+      "archetype": "aberration",
+      "palette": [
+        "#435058",
+        "#1f2529",
+        "#8ca1a9"
+      ],
+      "art": "hunched aberrant horror, spiked spine, clawed limbs, single huge unblinking central eye, many thick tentacles spread wide"
+    }
+  },
+  "aliases": {
+    "sildar hallwinter": "human warrior",
+    "human fighter": "human warrior",
+    "veteran": "human warrior",
+    "guard": "human warrior",
+    "redbrand ruffian": "human ruffian",
+    "redbrand": "human ruffian",
+    "ruffian": "human ruffian",
+    "bandit": "human ruffian",
+    "thug": "human ruffian",
+    "commoner": "human commoner",
+    "human": "human commoner",
+    "villager": "human commoner",
+    "gundren rockseeker": "dwarf commoner",
+    "nundro": "dwarf commoner",
+    "nundro rockseeker": "dwarf commoner",
+    "tharden": "dwarf commoner",
+    "dwarf": "dwarf commoner",
+    "cultist": "human cultist",
+    "iarno": "mage",
+    "iarno albrek": "mage",
+    "glasstaff": "mage",
+    "evil mage": "mage",
+    "elzard": "mage",
+    "hamun kost": "mage",
+    "red wizard": "mage",
+    "nezznar": "drow mage",
+    "nezznar the black spider": "drow mage",
+    "the black spider": "drow mage",
+    "black spider": "drow mage",
+    "female drow": "drow",
+    "male drow": "drow",
+    "female shroud": "wraith",
+    "male shroud": "wraith",
+    "venomfang": "young green dragon",
+    "green dragon": "young green dragon",
+    "dragon": "young green dragon",
+    "mormesk": "wraith",
+    "spider": "giant spider",
+    "jelly": "ochre jelly",
+    "ooze": "ochre jelly",
+    "blight": "twig blight",
+    "owl bear": "owlbear",
+    "adult red dragon": "adult dragon",
+    "adult green dragon": "adult dragon",
+    "adult blue dragon": "adult dragon",
+    "adult black dragon": "adult dragon",
+    "adult white dragon": "adult dragon",
+    "adult gold dragon": "adult dragon",
+    "adult silver dragon": "adult dragon",
+    "adult bronze dragon": "adult dragon",
+    "ancient red dragon": "ancient dragon",
+    "ancient green dragon": "ancient dragon",
+    "ancient blue dragon": "ancient dragon",
+    "ancient black dragon": "ancient dragon",
+    "ancient white dragon": "ancient dragon"
+  }
+}
