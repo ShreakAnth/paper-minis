@@ -144,6 +144,8 @@ def main(argv=None):
                          "512 and 11 MB at 400. Print shops call 300 dpi "
                          "photographic quality, so 400 is generous and "
                          "emailable. Never upscales.")
+    ap.add_argument("--statblock", action="store_true",
+                    help="parse input as a monster stat-block instead of a roster list")
     ap.add_argument("--no-pdf", action="store_true")
     ap.add_argument("--explain", action="store_true", help="print the scale table and exit")
     args = ap.parse_args(argv)
@@ -157,7 +159,7 @@ def main(argv=None):
 
     text = sys.stdin.read() if args.roster == "-" else Path(args.roster).read_text()
     db = CreatureDB(extra=Path(args.creatures_extra) if args.creatures_extra else None)
-    entries = parse_roster(text, db)
+    entries = parse_roster(text, db, is_statblock=args.statblock)
     if not entries:
         print("no roster entries parsed", file=sys.stderr)
         return 2

@@ -244,11 +244,11 @@ def parse_statblock(text: str) -> str:
     return f"1 {name} # size={size} archetype={archetype}"
 
 
-def parse_roster(text: str, db: CreatureDB | None = None) -> list[Entry]:
+def parse_roster(text: str, db: CreatureDB | None = None, is_statblock: bool = False) -> list[Entry]:
     db = db or CreatureDB()
     out = []
-    # Auto-convert stat block if detected
-    if "Armor Class" in text or "Hit Points" in text or "Challenge" in text:
+    # Convert stat block ONLY if explicitly requested
+    if is_statblock and ("Armor Class" in text or "Hit Points" in text or "Challenge" in text):
         text = parse_statblock(text)
     for line in text.splitlines():
         entry = parse_line(line, db)
