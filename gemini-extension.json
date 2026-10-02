@@ -1,0 +1,19 @@
+{
+  "name": "paper-minis",
+  "version": "0.1.0",
+  "description": "Generate printable paper miniatures from a roster of monsters or characters.",
+  "author": "Local project",
+  "entrypoint": "./paper-minis/scripts/build_minis.py",
+  "commands": [
+    {
+      "name": "build-minis",
+      "description": "Build a printable mini sheet from a roster file or pasted list.",
+      "usage": "python3 ./paper-minis/scripts/build_minis.py roster.txt --out ./out --title \"Tonight's Encounter\""
+    }
+  ],
+  "instructions": [
+    "Use the existing Python pipeline in ./paper-minis/scripts rather than creating a new renderer.",
+    "For installation and usage, prefer the repo's README and skill docs over ad hoc assumptions.",
+    "When the user asks for paper minis, parse the roster, run build_minis.py, and then report where the output was written."
+  ]
+}

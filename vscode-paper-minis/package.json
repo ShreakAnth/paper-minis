@@ -1,0 +1,104 @@
+{
+  "name": "paper-minis",
+  "displayName": "Paper Minis",
+  "description": "Generate print-ready paper miniatures from a roster, a natural-language prompt, or a Gemini-assisted workflow.",
+  "version": "0.2.0",
+  "publisher": "local",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/paper-minis"
+  },
+  "homepage": "https://github.com/your-org/paper-minis",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization",
+    "Machine Learning"
+  ],
+  "icon": "images/icon.png",
+  "keywords": [
+    "dnd",
+    "miniatures",
+    "paper",
+    "gemini",
+    "printable",
+    "generator"
+  ],
+  "activationEvents": [
+    "onCommand:paper-minis.build",
+    "onCommand:paper-minis.buildFromSelection",
+    "onCommand:paper-minis.buildFromPrompt",
+    "onCommand:paper-minis.openSidebar",
+    "onView:paper-minis-sidebar"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Paper Minis",
+      "properties": {
+        "paperMinis.geminiApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Gemini API key for converting a natural-language prompt into a roster."
+        },
+        "paperMinis.outputFolder": {
+          "type": "string",
+          "default": ".paper-minis-output",
+          "description": "Default output folder relative to the workspace root."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "paper-minis.build",
+        "title": "Paper Minis: Build from active file"
+      },
+      {
+        "command": "paper-minis.buildFromSelection",
+        "title": "Paper Minis: Build from selection"
+      },
+      {
+        "command": "paper-minis.buildFromPrompt",
+        "title": "Paper Minis: Build from prompt"
+      },
+      {
+        "command": "paper-minis.openSidebar",
+        "title": "Paper Minis: Open sidebar"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "paper-minis",
+          "title": "Paper Minis",
+          "icon": "$(symbol-misc)"
+        }
+      ]
+    },
+    "views": {
+      "paper-minis": [
+        {
+          "id": "paper-minis-sidebar",
+          "name": "Generator",
+          "type": "webview"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.12",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.5.4"
+  }
+}

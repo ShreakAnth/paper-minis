@@ -1,0 +1,206 @@
+{
+  "title": "Smoke Test",
+  "poses": {
+    "goblin": {
+      "minis": 2,
+      "poses_needed": 1,
+      "missing_poses": [
+        "goblin"
+      ]
+    },
+    "wolf": {
+      "minis": 1,
+      "poses_needed": 1,
+      "missing_poses": [
+        "wolf"
+      ]
+    }
+  },
+  "paper": "a4",
+  "scale_mode": "heroic",
+  "totals": {
+    "roster_entries": 2,
+    "minis": 3,
+    "printed_figures": 6,
+    "sheets": 1,
+    "sheet_utilisation": 0.111
+  },
+  "art": {
+    "backend": "svg",
+    "strict": false,
+    "procedural_fallbacks": [
+      "goblin",
+      "wolf"
+    ],
+    "sources": [
+      "procedural"
+    ],
+    "library": "C:\\Users\\sreek\\.dnd-paper-minis\\art\\default"
+  },
+  "stands": {
+    "style": "clip",
+    "by_clip": {
+      "3/4\"": 2,
+      "1\"": 1
+    },
+    "total_clips": 3,
+    "equivalent_1inch_clips": 3,
+    "note": "fold once, clip the blank strip at the bottom, no glue"
+  },
+  "size_table_mm": [
+    {
+      "size": "tiny",
+      "base_width_mm": 12.7,
+      "base_depth_mm": 4.5,
+      "figure_height_mm": 14.0,
+      "scale": "heroic"
+    },
+    {
+      "size": "small",
+      "base_width_mm": 25.4,
+      "base_depth_mm": 6.35,
+      "figure_height_mm": 22.0,
+      "scale": "heroic"
+    },
+    {
+      "size": "medium",
+      "base_width_mm": 25.4,
+      "base_depth_mm": 6.35,
+      "figure_height_mm": 30.0,
+      "scale": "heroic"
+    },
+    {
+      "size": "large",
+      "base_width_mm": 50.8,
+      "base_depth_mm": 9.0,
+      "figure_height_mm": 50.0,
+      "scale": "heroic"
+    },
+    {
+      "size": "huge",
+      "base_width_mm": 76.2,
+      "base_depth_mm": 9.0,
+      "figure_height_mm": 72.0,
+      "scale": "heroic"
+    },
+    {
+      "size": "gargantuan",
+      "base_width_mm": 101.6,
+      "base_depth_mm": 9.0,
+      "figure_height_mm": 95.0,
+      "scale": "heroic"
+    }
+  ],
+  "entries": [
+    {
+      "label": "Goblins",
+      "key": "goblin",
+      "count": 2,
+      "size": "small",
+      "archetype": "humanoid-armored",
+      "palette": [
+        "#5c8a3f",
+        "#31501f",
+        "#d2ba7c"
+      ],
+      "art": "wiry green-skinned goblin, oversized ears, scimitar and battered wooden shield, scrap leather armour",
+      "unresolved": false,
+      "gender": "",
+      "photo": null,
+      "overrides": {},
+      "source_line": "2 Goblins"
+    },
+    {
+      "label": "Wolf",
+      "key": "wolf",
+      "count": 1,
+      "size": "medium",
+      "archetype": "quadruped",
+      "palette": [
+        "#666666",
+        "#333333",
+        "#999999"
+      ],
+      "art": "grey timber wolf, snarling jaws, thick winter pelt, predatory stalking stance",
+      "unresolved": false,
+      "gender": "",
+      "photo": null,
+      "overrides": {},
+      "source_line": "1 Wolf"
+    }
+  ],
+  "minis": [
+    {
+      "label": "Wolf",
+      "key": "wolf",
+      "index": 1,
+      "size": "medium",
+      "figure_mm": 18.81,
+      "base_mm": 27.0,
+      "base_depth_mm": 12.7,
+      "cell_mm": [
+        27.0,
+        80.0
+      ],
+      "page": 1,
+      "row": 0,
+      "xy_mm": [
+        8.0,
+        19.0
+      ],
+      "art": "procedural:quadruped"
+    },
+    {
+      "label": "Goblins",
+      "key": "goblin",
+      "index": 1,
+      "size": "small",
+      "figure_mm": 22.0,
+      "base_mm": 25.4,
+      "base_depth_mm": 12.7,
+      "cell_mm": [
+        27.0,
+        64.0
+      ],
+      "page": 1,
+      "row": 1,
+      "xy_mm": [
+        8.0,
+        100.5
+      ],
+      "art": "procedural:humanoid-armored"
+    },
+    {
+      "label": "Goblins",
+      "key": "goblin",
+      "index": 2,
+      "size": "small",
+      "figure_mm": 22.0,
+      "base_mm": 25.4,
+      "base_depth_mm": 12.7,
+      "cell_mm": [
+        27.0,
+        64.0
+      ],
+      "page": 1,
+      "row": 1,
+      "xy_mm": [
+        35.0,
+        100.5
+      ],
+      "art": "procedural:humanoid-armored"
+    }
+  ],
+  "outputs": {
+    "svg": [
+      "sheet-01.svg"
+    ],
+    "pdf": "minis.pdf",
+    "page_pdfs": []
+  },
+  "warnings": [
+    "Goblins#1: height-limited by the small box ((25.4 * 22.0 mm): this pose is tall and narrow, so it is 13.6 mm wide rather than the full square",
+    "Goblins#2: height-limited by the small box ((25.4 * 22.0 mm): this pose is tall and narrow, so it is 13.6 mm wide rather than the full square"
+  ],
+  "geometry_problems": []
+}
